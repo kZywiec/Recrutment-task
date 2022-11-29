@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Product>
+
+<script>
+     $("input:checkbox").click(function() { return false; });
+</script>
+
+<div class="text-center">
+    <h1>Welcome</h1>
+    <h3>At RoboZoo menagment page.</h3>
+    <br />
+    <h6>Saldo:@ViewBag.Saldo$</h6>
+    <br />
+    <h5>List of our products:</h5>
+</div>
+
+<table class="table" style="width:auto" align="center">
+    @foreach(var product in Model){
+        
+        <tr>
+            <td>@product.Name </td>
+            <td>
+                <a class="btn" style="background-color:lightgreen;" 
+                asp-controller="Menage" asp-action="AddCampany" asp-route-P_id=@product.Id> Add Campany </a>
+            </td>
+        </tr>
+
+        @foreach(var campany in product.companies_List){
+            <tr>
+                <td>
+                    @if (campany.Status)
+                    {
+                        <a class="btn" style="background-color:lightgreen;"
+                        asp-controller="Menage" asp-action="EditCampany" asp-route-P_Id=@product.Id asp-route-C_Id=@campany.Id> @campany.Campaign_name </a>
+                    }
+                    @if (!campany.Status)
+                    {
+                        <a class="btn" style="background-color:indianred;"
+                        asp-controller="Menage" asp-action="EditCampany" asp-route-P_Id=@product.Id asp-route-C_Id=@campany.Id> @campany.Campaign_name </a>
+                    }
+                </td>
+                <td>
+                    <a class="btn" style="background-color:red; color:white"
+            asp-controller="Menage" asp-action="DeleteCampany" asp-route-P_Id=@product.Id asp-route-C_Id=@campany.Id>Delete</a>
+                </td>
+            </tr>
+        }
+    }
+</table>

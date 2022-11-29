@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Campany - Add";
+}
+
+@model Campany
+
+<form asp-action="AddCampany" method="post">
+    <div asp-validation-summary="All">
+        <div >
+            <table>
+                <tr>
+                    <td>Campaign name:</td>
+                    <td><input required type="text" asp-for="Campaign_name" /></td>
+                </tr>
+                <tr>
+                    <td>Keywords:</td>
+                    <td><input required type="text" asp-for="Keywords" value="Keywords" /></td>
+                </tr>
+                <tr>
+                    <td>Bid amount:</td>
+                    <td><input required type="number" asp-for="Bid_amount" /></td>
+                </tr>
+                <tr>
+                    <td>Campaign fund:</td>
+                    <td><input required type="number" asp-for="Campaign_fund" /></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><input required type="checkbox" asp-for="Status" /></td>
+                </tr>
+                <tr>
+                    <td>Town:</td>
+                    <td>
+                        <select type="number" asp-for="Town" >
+                            <option value="Cracow"> Cracow  </option>
+                            <option value="Warsaw"> Warsaw  </option>
+                            <option value="Berlin"> Berlin  </option>
+                            <option value="Prage">  Prage   </option>
+                            <option value="London"> London  </option>
+                            <option value="Rome">   Rome    </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Radius:</td>
+                    <td><input required type="number" asp-for="Radius" /> Km</td>
+                </tr>
+            </table>
+            <input type="submit" value="Save" class="btn-outline-dark"/>
+        </div>
+        <input hidden asp-for="Product_Id" value="@ViewBag.P_Id" />
+    </div>
+</form>

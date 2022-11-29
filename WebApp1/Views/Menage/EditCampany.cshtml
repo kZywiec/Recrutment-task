@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Company - Edit";
+}
+
+@model Campany
+
+<form asp-action="EditCampany" method="post">
+    <div asp-validation-summary="All">
+        <div >
+            <table>
+                <tr>
+                    <td>Campaign name:</td>
+                    <td><input type="text" asp-for="Campaign_name" value="@Model.Campaign_name"/></td>
+                </tr>
+                <tr>
+                    <td>Keywords:</td>
+                    <td><input type="text" asp-for="Keywords" value="@Model.Keywords" /></td>
+                </tr>
+                <tr>
+                    <td>Bid amount:</td>
+                    <td><input type="number" asp-for="Bid_amount" value="@Model.Bid_amount"/></td>
+                </tr>
+                <tr>
+                    <td>Campaign fund:</td>
+                    <td><input type="number" asp-for="Campaign_fund" value="@Model.Campaign_fund"/></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><input type="checkbox" asp-for="Status" value="@Model.Status"/></td>
+                </tr>
+                <tr>
+                    <td>Town:</td>
+                    <td>
+                        <select type="number" asp-for="Town" value="@Model.Town">
+                            <option value="Cracow"> Cracow  </option>
+                            <option value="Warsaw"> Warsaw  </option>
+                            <option value="Berlin"> Berlin  </option>
+                            <option value="Prage">  Prage   </option>
+                            <option value="London"> London  </option>
+                            <option value="Rome">   Rome    </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Radius:</td>
+                    <td><input type="number" asp-for="Radius" value="@Model.Radius"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="Save" class="btn-outline-dark"/>
+        </div>
+        <input hidden asp-for="Product_Id" value="@Model.Product_Id" />
+    </div>
+</form>
